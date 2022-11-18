@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main>
+      <div class="wrapper">
+        <div class="heading-container">
+          <h1 class="title">Metric/Imperial Unit Conversion</h1>
+          <input id="number" class="value-input" type="text" placeholder="0" />
+          <p id="error-msg"></p>
+          <button id="convert-btn" class="convert-btn">Convert</button>
+        </div>
+        <div class="conversion-container">
+          <div class="unit-box box-1">
+            <h2 class="unit-title">Length (Meter/Feet)</h2>
+            <p id="convert-meters" class="unit-text">
+              0 meters = 0 feet | 0 feet = 0 meters
+            </p>
+          </div>
+          <div class="unit-box box-2">
+            <h2 class="unit-title">Volume (Liters/Gallons)</h2>
+            <p id="convert-liters" class="unit-text">
+              0 liters = 0 gallons | 0 gallons = 0 liters
+            </p>
+          </div>
+          <div class="unit-box box-3">
+            <h2 class="unit-title">Mass (Kilograms/Pounds)</h2>
+            <p id="convert-kilos" class="unit-text">
+              0 kilos = 0 pounds | 0 pounds = 0 kilos
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
