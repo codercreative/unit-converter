@@ -4,37 +4,42 @@
 1 kilogram = 2.204 pound
 */
 
-const userInputNumber = document.getElementById("number");
-const errorMsg = document.getElementById("error-msg");
+const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
-
-const convertMeters = document.getElementById("convert-meters");
-const convertLiters = document.getElementById("convert-liters");
-const convertKg = document.getElementById("convert-kilos");
+const errorMsg = document.getElementById("error-msg");
+const lengthEl = document.getElementById("length-el");
+const volumeEl = document.getElementById("volume-el");
+const massEl = document.getElementById("mass-el");
 
 convertBtn.addEventListener("click", function () {
-  let userInput = userInputNumber.value;
-  const number = /^[0-9]+$/;
-
-  const multiplyMeter = (userInput * 3.281).toFixed(2);
-  const divideFeet = (userInput / 3.281).toFixed(2);
-  const multiplyLiter = (userInput * 0.264).toFixed(2);
-  const divideGallons = (userInput / 0.264).toFixed(2);
-  const multiplyKg = (userInput * 2.204).toFixed(2);
-  const dividePounds = (userInput / 2.204).toFixed(2);
-
-  if (userInput.match(number)) {
-    errorMsg.textContent = ``;
-
-    convertMeters.innerHTML = `
-    <p> ${userInput} meters = ${multiplyMeter} feet | ${userInput} feet = ${divideFeet} meters </p>`;
-
-    convertLiters.innerHTML = `
-    <p> ${userInput} liters = ${multiplyLiter} gallons | ${userInput} gallons = ${divideGallons} liters </p>`;
-
-    convertKg.innerHTML = `
-    <p> ${userInput} kilos = ${multiplyKg} pounds | ${userInput} pounds = ${dividePounds} kilos </p>`;
-  } else {
-    errorMsg.innerHTML = `<p>Please enter a number</p>`;
-  }
+  renderConversion();
 });
+
+function renderConversion() {
+  let userInput = Number(numberInput.value);
+
+  if (Number.isFinite(userInput)) {
+    lengthEl.textContent = `${userInput} meters = ${(userInput * 3.281).toFixed(
+      3
+    )} feet | ${userInput} feet = ${(userInput / 3.281).toFixed(3)} meters`;
+
+    volumeEl.textContent = `${userInput} liters = ${(userInput * 0.264).toFixed(
+      3
+    )} gallons | ${userInput} gallons = ${(userInput / 0.264).toFixed(
+      3
+    )} liters`;
+
+    massEl.textContent = `${userInput} kilos = ${(userInput * 2.204).toFixed(
+      3
+    )} pounds | ${userInput} pounds = ${(userInput / 2.204).toFixed(3)} kilos`;
+
+    errorMsg.textContent = ``;
+    errorMsg.classList.remove("border");
+  } else {
+    errorMsg.textContent = `Please enter a number!`;
+    lengthEl.textContent = "";
+    volumeEl.textContent = "";
+    massEl.textContent = "";
+    errorMsg.classList.add("border");
+  }
+}
